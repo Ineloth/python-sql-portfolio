@@ -1,0 +1,7 @@
+customer_id,customer_name,city,segment
+C001,Alpha Sp. z o.o.,Warsaw,Business
+C002,Beta Tech,Krakow,Business
+C003,Jan Nowak,Gdansk,Individual
+C004,Marta Zielinska,Wroclaw,Individual
+C005,Delta Office,Poznan,Business
+C006,Piotr Malec,Warsaw,Individual

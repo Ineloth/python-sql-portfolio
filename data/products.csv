@@ -1,0 +1,9 @@
+product_id,product_name,category,price
+P101,Laptop Air,Electronics,3200
+P102,Mechanical Keyboard,Electronics,450
+P103,Wireless Mouse,Electronics,120
+P104,Office Chair,Furniture,900
+P105,Desk Lamp,Furniture,150
+P106,Monitor 27,Electronics,1100
+P107,Notebook Set,Office,80
+P108,USB-C Dock,Electronics,350

@@ -13,3 +13,49 @@ order by total_revenue desc;
 -- Revenue and discount impact by city
 -- Cities are classified as "big discount" if discount loss exceeds 5% of total revenue.
 
+--||----||----||----||----||----||----||----||----||----||----||----||----||----||----||--
+
+Select s.product,
+s.channel_group,
+sum(s.qty) as total_qty,
+sum(s.revenue) as total_revenue,
+sum(s.discount_loss) as discount_loss,
+sum(s.discounted_revenue) as total_discount_rev,
+round((cast(sum(s.discount_loss)as real)/nullif(sum(s.revenue),0)),2) as discount_ratio,
+case when sum(s.qty)>3 and round((cast(sum(s.discount_loss)as real)/nullif(sum(s.revenue),0)),2)>=0.05
+then 'high discount impact' else 'low discount impact' end as discount_impact_status
+from sales_clean_for_sql s
+group by s.product, s.channel_group
+Order by s.product asc;
+
+--||----||----||----||----||----||----||----||----||----||----||----||----||----||----||--
+
+with sub_channel as (select s.channel_group,
+sum(s.revenue) as total_revenue
+from sales_clean_for_sql s
+group by channel_group),
+
+sub_laptop as (select s.channel_group,
+sum(s.revenue) as total_revenue
+FROM sales_clean_for_sql s
+where s.product = 'Laptop'
+group by s.channel_group)
+
+select sub_channel.channel_group,
+sub_channel.total_revenue,
+coalesce(sub_laptop.total_revenue, 0.0) as total_laptop_revenue,
+coalesce(round(cast(coalesce(sub_laptop.total_revenue, 0.0) as real)/nullif(sub_channel.total_revenue,0),2), 0.0) as laptop_revenue_share,
+case 
+when round(cast(coalesce(sub_laptop.total_revenue, 0.0) as real)/nullif(sub_channel.total_revenue,0),2) > 0.5 then 'high laptop dependency'
+when round(cast(coalesce(sub_laptop.total_revenue, 0.0) as real)/nullif(sub_channel.total_revenue,0),2) <=0.5 and round(cast(coalesce(sub_laptop.total_revenue, 0.0) as real)/nullif(sub_channel.total_revenue,0),2) >0.2 then 'medium laptop dependency' 
+else 'low laptop dependency' 
+end as share_status 
+
+from sub_channel left join sub_laptop on sub_channel.channel_group=sub_laptop.channel_group
+order by sub_channel.total_revenue desc;
+
+-- The results suggest that the digital channel is strongly dependent on laptop revenue, 
+-- while other channels show little or no visible laptop sales activity.
+
+--Discounts seem to have a stronger impact in store sales channels than in digital ones, 
+--as high-volume and higher-discount combinations appear more frequently in store-based sales.

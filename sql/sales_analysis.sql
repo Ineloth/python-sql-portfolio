@@ -1,1 +1,3 @@
-
+-- Sales Analysis in SQL
+-- Mini project based on the same sales dataset used in the Python/pandas project.
+-- Goal: practice basic SQL reporting with SELECT, GROUP BY, aggregation and CASE.

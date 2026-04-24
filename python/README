@@ -29,3 +29,11 @@ After cleaning the data:
 - Electronics products drive most of the revenue
 - Different sales patterns observed between cities and channels
 - Discounts had the biggest impact on Mouse sales
+
+## Example outputs
+
+### Data quality summary
+![Data Quality](./summary_df.png)
+
+### Discount impact analysis
+![Discount Analysis](./discount_impact_summary.png)

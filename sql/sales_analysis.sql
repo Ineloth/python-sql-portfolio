@@ -5,7 +5,7 @@
 SELECT s.city,
 round(sum(s.revenue),2) as total_revenue,
 round(sum(s.discounted_revenue),2) as total_discounted_rev,
-round(sum(s.revenue)-sum(s.discounted_revenue),2) as discount_loss,
+round(sum(s.discount_loss),2) as discount_loss,
 case when sum(s.revenue)-sum(s.discounted_revenue)>sum(s.revenue)*0.05 then 'big discount' else 'small discount' end as discount_status
 from sales_clean_for_sql s
 group by s.city

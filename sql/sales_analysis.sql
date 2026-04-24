@@ -28,6 +28,9 @@ from sales_clean_for_sql s
 group by s.product, s.channel_group
 Order by s.product asc;
 
+--Discounts seem to have a stronger impact in store sales channels than in digital ones, 
+--as high-volume and higher-discount combinations appear more frequently in store-based sales.
+
 --||----||----||----||----||----||----||----||----||----||----||----||----||----||----||--
 
 with sub_channel as (select s.channel_group,
@@ -57,5 +60,4 @@ order by sub_channel.total_revenue desc;
 -- The results suggest that the digital channel is strongly dependent on laptop revenue, 
 -- while other channels show little or no visible laptop sales activity.
 
---Discounts seem to have a stronger impact in store sales channels than in digital ones, 
---as high-volume and higher-discount combinations appear more frequently in store-based sales.
+

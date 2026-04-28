@@ -60,4 +60,22 @@ order by sub_channel.total_revenue desc;
 -- The results suggest that the digital channel is strongly dependent on laptop revenue, 
 -- while other channels show little or no visible laptop sales activity.
 
+--||----||----||----||----||----||----||----||----||----||----||----||----||----||----||--
 
+-- Q1 sales performance by city
+-- Cities are classified into volume and revenue levels based on Q1 totals in the available dataset.
+
+select s.city,
+sum(s.qty) as total_qty,
+sum(s.revenue) as total_revenue,
+case when sum(s.qty)>= 5 then 'high volume' when sum(s.qty)<3 then 'low volume' else 'medium volume' end as quantity_levels,
+case when sum(s.revenue)>= 6000 then 'high revenue' when sum(s.revenue)<3000 then 'low revenue' else 'medium revenue' end as revenue_levels,
+'Q1' as quarter
+from sales_clean_for_sql s
+where s.date_clean >= '2026-01-01' and s.date_clean <'2026-04-01' 
+group by s.city
+order by total_revenue desc;
+
+-- In Q1, Warsaw showed both high sales volume and high revenue, making it the strongest-performing city in the available dataset.
+-- Krakow also performed well in volume, but with lower revenue than Warsaw.
+-- Gdansk achieved high volume with relatively low revenue, which may suggest lower average transaction value compared to other cities.

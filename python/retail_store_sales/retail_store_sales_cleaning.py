@@ -7,7 +7,7 @@ import pandas as pd
 # 1. Load raw dataset
 # -----------------------------------------------------------------------------
 
-INPUT_FILE = "data/retail_store_sales/raw/retail_store_sales.csv"
+INPUT_FILE = "data/retail_store_sales/retail_store_sales/raw/retail_store_sales.csv.csv"
 OUTPUT_FILE = "data/retail_store_sales/retail_store_sales/clean/retail_store_sales_clean.csv"
 
 

@@ -14,7 +14,8 @@ I want to keep here my first small Python and SQL projects.
 - simple notes and summaries
 
 ## Status
-Repository created. First files will be added soon.
+Portfolio in progress.  
+Current focus: Python data cleaning, SQL analysis and small end-to-end data projects.
 
 ## Projects
 
@@ -39,5 +40,12 @@ Key cleaning results:
 - Recovered missing item names: 1,213
 - Removed non-recoverable sales rows: 604
 - Missing discount values filled as `unknown`
+  
+Skills demonstrated:
+- pandas data cleaning
+- missing value recovery
+- lookup-based imputation
+- data quality flags
+- clean CSV export for SQL analysis
 
 [View Python cleaning script](python/retail_store_sales/retail_store_sales_cleaning.py)

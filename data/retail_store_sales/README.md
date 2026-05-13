@@ -9,7 +9,7 @@ data/retail_store_sales/
 ├── raw/
 └── clean/
 
-Raw data
+#  Raw data
 
 The raw dataset contains messy retail transaction data with missing values in several columns, including:
 
@@ -21,7 +21,7 @@ Discount Applied
 
 The raw file is used as the starting point for the Python data cleaning process.
 
-Clean data
+# Clean data
 
 The cleaned dataset is stored in:
 
@@ -29,7 +29,7 @@ clean/retail_store_sales_clean.csv
 
 The clean file was prepared with pandas and is intended for SQL analysis.
 
-Cleaning summary
+# Cleaning summary
 
 Key cleaning results:
 

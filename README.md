@@ -40,4 +40,4 @@ Key cleaning results:
 - Removed non-recoverable sales rows: 604
 - Missing discount values filled as `unknown`
 
-[View Python cleaning script](python/retail_store_sales/retail_store_sales.py)
+[View Python cleaning script](python/retail_store_sales/retail_store_sales_cleaning.py)

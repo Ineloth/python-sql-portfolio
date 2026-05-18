@@ -1,3 +1,13 @@
+-- Query 04: Top categories by revenue
+-- Purpose:
+--   Rank product categories by total revenue across the full dataset.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, DENSE_RANK(), ROUND()
+
 with category_sales as (select r.category,
 count(r.transaction_id) as transaction_count,
 sum(r.total_spent) as category_revenue,

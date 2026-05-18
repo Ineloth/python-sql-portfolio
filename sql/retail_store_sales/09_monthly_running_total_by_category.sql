@@ -1,3 +1,13 @@
+-- Query 09: Monthly running total by category
+-- Purpose:
+--   Calculate cumulative monthly revenue separately for each category.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), PARTITION BY, ORDER BY, ROUND()
+
 with monthly_sales as (select strftime('%Y-%m', r.transaction_date) as sales_month,
 r.category,
 count(r.transaction_id) as transaction_count,

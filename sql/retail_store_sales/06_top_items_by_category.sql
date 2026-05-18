@@ -1,3 +1,13 @@
+-- Query 06: Top items by category
+-- Purpose:
+--   Identify the top 3 revenue-generating products within each category.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, DENSE_RANK(), PARTITION BY, WHERE, ROUND()
+
 with item_sales as (select r.item,
 r.category,
 count(r.transaction_id) as transaction_count,

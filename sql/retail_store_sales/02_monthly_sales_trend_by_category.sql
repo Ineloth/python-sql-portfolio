@@ -1,4 +1,14 @@
--- 1 etap finalny
+-- Query 02: Monthly sales trend by category
+-- Purpose:
+--   Analyze monthly revenue trends separately for each product category,
+--   including previous category revenue, revenue change and percentage change.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, LAG(), PARTITION BY, CASE, NULLIF(), ROUND()
+
 with month_sales as (select strftime('%Y-%m',r.transaction_date) as sales_month,
 r.category,
 count(r.transaction_id) as transaction_count,

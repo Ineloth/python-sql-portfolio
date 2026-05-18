@@ -1,3 +1,14 @@
+-- Query 12: Sales by payment method
+-- Purpose:
+--   Analyze total revenue, transaction count, average transaction value,
+--   revenue share and ranking by payment method.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), DENSE_RANK(), NULLIF(), ROUND()
+
 with payment_revenue as (select r.payment_method,
 count(r.transaction_id) as transaction_count,
 sum(r.total_spent) as total_revenue,

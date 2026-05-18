@@ -1,38 +1,14 @@
--- 1 etap
-
-select strftime('%Y-%m', r.transaction_date) as sales_month,
-count(r.transaction_id) as transaction_count,
-round(sum(r.total_spent),2) as total_revenue,
-round(avg(r.total_spent),2) as avg_transaction_value
-from retail_store_sales_clean r
-group by strftime('%Y-%m', r.transaction_date)
-order by sales_month;
-
--- 2 etap
-with month_sales as (select strftime('%Y-%m', r.transaction_date) as sales_month,
-count(r.transaction_id) as transaction_count,
-sum(r.total_spent) as total_revenue,
-avg(r.total_spent) as avg_transaction_value
-from retail_store_sales_clean r
-group by strftime('%Y-%m', r.transaction_date)),
-
-previous_sales as (select sales_month,
-transaction_count,
-total_revenue,
-avg_transaction_value,
-lag(total_revenue) over (order by sales_month ) as previous_revenue
-from month_sales)
-
-select sales_month,
-transaction_count,
-round(total_revenue,2) as total_revenue,
-round(avg_transaction_value,2) as avg_transaction_value,
-round(previous_revenue,2) as previous_revenue,
-total_revenue-previous_revenue as revenue_change
-from previous_sales
-order by sales_month;
-
--- 3 etap finalny
+-- Query 01: Monthly sales trend
+-- Purpose:
+--   Analyze overall monthly sales performance, including total revenue,
+--   transaction count, average transaction value, previous month revenue,
+--   month-over-month revenue change and percentage change.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, LAG(), CASE, NULLIF(), ROUND()
 
 with month_sales as (select strftime('%Y-%m', r.transaction_date) as sales_month,
 count(r.transaction_id) as transaction_count,

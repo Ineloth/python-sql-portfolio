@@ -1,3 +1,14 @@
+-- Query 11: Quarterly sales trend
+-- Purpose:
+--   Analyze quarterly revenue, average transaction value, previous quarter revenue,
+--   quarter-over-quarter change and percentage change.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, CASE, GROUP BY, LAG(), NULLIF(), ROUND()
+
 with quarter_sales as (select strftime('%Y',r.transaction_date) as year_sales,
 count(r.transaction_id) as transaction_count,
 case when cast(strftime('%m',r.transaction_date) as INTEGER) BETWEEN 1 and 3 THEN 'Q1'

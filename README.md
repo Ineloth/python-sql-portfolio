@@ -31,7 +31,8 @@ Project focused on cleaning messy retail transaction data with pandas and prepar
 Current stage:
 - Python data cleaning completed
 - Clean CSV exported
-- SQL analysis planned as next step
+- SQL analysis
+- Planned Power BI dashboard
 
 Key cleaning results:
 - Raw rows: 12,575
@@ -49,3 +50,20 @@ Skills demonstrated:
 - clean CSV export for SQL analysis
 
 [View Python cleaning script](python/retail_store_sales/retail_store_sales_cleaning.py)
+
+### Retail Store Sales Data Cleaning & SQL Trend Analysis
+
+End-to-end analytical project based on retail sales data.
+
+Current scope:
+- data cleaning and validation in Python/pandas,
+- missing value recovery using lookup-based logic,
+- cleaned CSV export,
+- SQL analysis in SQLite,
+- monthly and quarterly sales trends,
+- category, item, location and payment method analysis,
+- window functions, rankings, running totals and moving averages,
+- executive KPI summary.
+
+Next planned step:
+- Power BI dashboard based on the cleaned transaction-level dataset.

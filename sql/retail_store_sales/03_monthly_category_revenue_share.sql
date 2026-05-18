@@ -1,3 +1,13 @@
+-- Query 03: Monthly category revenue share
+-- Purpose:
+--   Calculate each category's revenue share within every month.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), PARTITION BY, NULLIF(), ROUND()
+
 with category_monthly_sales  as (select strftime('%Y-%m',r.transaction_date) as sales_month,
 r.category,
 count(r.transaction_id) as transaction_count,

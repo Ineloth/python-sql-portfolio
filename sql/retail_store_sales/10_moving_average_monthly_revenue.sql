@@ -1,3 +1,13 @@
+-- Query 10: Moving average monthly revenue
+-- Purpose:
+--   Calculate monthly revenue and a 3-month moving average to smooth the sales trend.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, AVG() OVER(), ROWS BETWEEN, ORDER BY, ROUND()
+
 with monthly_sales as (select strftime ('%Y-%m', r.transaction_date) as sales_month,
 count(r.transaction_id) as transaction_count,
 sum(r.total_spent) as monthly_revenue,

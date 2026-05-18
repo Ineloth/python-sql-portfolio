@@ -1,3 +1,13 @@
+-- Query 05: Top items by revenue
+-- Purpose:
+--   Identify the top 10 products by total revenue across the full dataset.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, DENSE_RANK(), WHERE, ROUND()
+
 with item_sales as (select r.item,
 r.category,
 count(r.transaction_id) as transaction_count,

@@ -1,3 +1,13 @@
+-- Query 08: Monthly running total
+-- Purpose:
+--   Calculate cumulative revenue over time based on monthly sales.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), ORDER BY, ROUND()
+
 with monthly_sales as (select strftime('%Y-%m', r.transaction_date) as sales_month,
 count(r.transaction_id) as transaction_count,
 sum(r.total_spent) as monthly_revenue,

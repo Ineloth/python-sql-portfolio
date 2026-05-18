@@ -1,3 +1,13 @@
+-- Query 13: Monthly payment method share
+-- Purpose:
+--   Analyze how payment method revenue share changes month by month.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), DENSE_RANK(), PARTITION BY, NULLIF(), ROUND()
+
 with payment_sales as (select strftime('%Y-%m', r.transaction_date) as sales_month,
 r.payment_method,
 count(r.transaction_id) as transaction_count,

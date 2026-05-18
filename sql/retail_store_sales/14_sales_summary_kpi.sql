@@ -1,3 +1,14 @@
+-- Query 14: Sales summary KPI
+-- Purpose:
+--   Create a one-row executive summary with key sales metrics and top-performing
+--   category, item, location and payment method.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, COUNT DISTINCT, GROUP BY, ORDER BY, LIMIT, CROSS JOIN, ROUND()
+
 with overall_kpi as (select count(r.transaction_id) as transaction_count,
 sum(r.total_spent) as total_revenue,
 avg(r.total_spent) as avg_transaction_value,

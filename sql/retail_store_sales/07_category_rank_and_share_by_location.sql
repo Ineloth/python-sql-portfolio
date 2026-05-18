@@ -1,3 +1,14 @@
+-- Query 07: Category rank and share by location
+-- Purpose:
+--   Analyze category performance within each location, including revenue share
+--   and category ranking by location.
+--
+-- Dataset:
+--   retail_store_sales_clean
+--
+-- Key SQL concepts:
+--   CTE, GROUP BY, SUM() OVER(), DENSE_RANK(), PARTITION BY, NULLIF(), ROUND()
+
 with category_revenue as (select r.location,
 r.category,
 count(r.transaction_id) as transaction_count,

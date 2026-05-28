@@ -65,5 +65,14 @@ Current scope:
 - window functions, rankings, running totals and moving averages,
 - executive KPI summary.
 
-Next planned step:
-- Power BI dashboard based on the cleaned transaction-level dataset.
+## Power BI dashboard
+
+A Power BI dashboard was added as the final reporting layer of this project.
+
+The dashboard includes:
+- Sales Overview
+- Time Analysis
+- Category Analysis
+
+The report uses a dedicated date table, interactive slicers, tooltips, and DAX time intelligence measures.
+

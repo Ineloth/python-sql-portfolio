@@ -81,6 +81,20 @@ Main elements:
 
 The Category Filter is configured mainly to support the `Top Items by Revenue` visual while keeping the category comparison visuals readable.
 
+### 4. Customer Analysis
+
+The fourth page focuses on customer-level sales performance.
+
+Main elements:
+- Top Customers by Revenue
+- Top Customers by Transaction Count
+- Top Customers by Avg Transaction Value
+- Customer Revenue Share %
+- Filters for Year, Location, and Payment Method
+- Tooltips with revenue, transaction count, average transaction value, and customer share
+
+This page helps identify whether top customers generate revenue mainly through transaction volume or higher average transaction value.
+
 ## Data model
 
 The report uses:
@@ -103,6 +117,14 @@ The `DimDate` table includes:
 
 `Month Name` is sorted by `Month Number`.
 
+Additional improvements after review:
+- Created a dedicated Measures table for DAX measures
+- Added data labels to key visuals
+- Added conditional colors for positive and negative MoM/YoY changes
+- Added additional filters for Time, Category, and Customer analysis pages
+- Added Customer Analysis page
+- Replaced duplicated category revenue visual with category revenue split by location
+- 
 ## Key DAX measures
 
 ### Total Revenue
@@ -219,6 +241,18 @@ DIVIDE(
     CALCULATE(
         [Total Revenue],
         ALL(retail_store_sales_clean[category])
+    )
+)
+```
+### Customer Revenue Share %
+
+```DAX
+Customer Revenue Share % =
+DIVIDE(
+    [Total Revenue],
+    CALCULATE(
+        [Total Revenue],
+        ALL(retail_store_sales_clean[customer_id])
     )
 )
 ```
